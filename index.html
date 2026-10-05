@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Apagar PC">
+    <title>Apagar PC</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="apple-touch-icon" href="./icons/icon.svg">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Control remoto personal</p>
+          <h1>Apagar PC</h1>
+        </div>
+        <button id="signOutBtn" class="icon-button hidden" type="button" title="Cerrar sesión">Salir</button>
+      </section>
+
+      <section id="configWarning" class="notice danger hidden">
+        Falta configurar Supabase en <strong>web/config.js</strong>.
+      </section>
+
+      <section id="authView" class="panel">
+        <h2>Entrar</h2>
+        <form id="authForm" class="form">
+          <label>
+            Email
+            <input id="email" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            Contraseña
+            <input id="password" type="password" autocomplete="current-password" required>
+          </label>
+          <div class="button-row">
+            <button type="submit" data-mode="signin">Iniciar sesión</button>
+            <button type="button" id="signUpBtn" class="secondary">Crear cuenta</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="mainView" class="hidden">
+        <section class="status-strip">
+          <div>
+            <span class="status-dot" id="statusDot"></span>
+            <strong id="deviceStatus">Sin dispositivo</strong>
+          </div>
+          <span id="lastSeen">--</span>
+        </section>
+
+        <section class="panel">
+          <h2>Dispositivo</h2>
+          <div class="device-grid">
+            <label>
+              PC
+              <select id="deviceSelect"></select>
+            </label>
+            <button id="refreshBtn" class="secondary" type="button">Actualizar</button>
+          </div>
+          <form id="deviceForm" class="form compact">
+            <label>
+              Nombre de la PC
+              <input id="deviceName" type="text" value="PC Casa" maxlength="80">
+            </label>
+            <button type="submit">Registrar PC</button>
+          </form>
+          <div id="deviceIdBox" class="code-box hidden"></div>
+        </section>
+
+        <section class="actions-grid">
+          <button class="danger-action" data-action="shutdown" type="button">Apagar PC</button>
+          <button data-action="restart" type="button">Reiniciar</button>
+          <button data-action="sleep" type="button">Suspender</button>
+          <button data-action="lock" type="button">Bloquear</button>
+          <button data-action="logout" type="button">Cerrar sesión</button>
+          <button data-action="cancel_shutdown" type="button">Cancelar apagado</button>
+        </section>
+
+        <section class="panel">
+          <h2>Apagado programado</h2>
+          <form id="scheduleForm" class="schedule-form">
+            <label>
+              Minutos
+              <input id="scheduleMinutes" type="number" min="0" max="1440" value="10">
+            </label>
+            <button type="submit">Programar</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Comandos recientes</h2>
+          <div id="commandsList" class="list"></div>
+        </section>
+      </section>
+
+      <div id="toast" class="toast hidden"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./config.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
+

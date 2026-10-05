@@ -1,0 +1,260 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --panel: #182235;
+  --panel-soft: #22304a;
+  --text: #f8fafc;
+  --muted: #a7b3c7;
+  --line: #334155;
+  --accent: #38bdf8;
+  --good: #34d399;
+  --warn: #fbbf24;
+  --danger: #fb7185;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: calc(32px + env(safe-area-inset-bottom));
+}
+
+.topbar,
+.status-strip,
+.button-row,
+.device-grid,
+.schedule-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar {
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+h1,
+h2 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: 2.1rem;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+
+.panel,
+.notice,
+.status-strip {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.notice.danger {
+  border-color: var(--danger);
+  color: #ffe4e6;
+}
+
+.form,
+.compact {
+  display: grid;
+  gap: 12px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+input,
+select {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0b1220;
+  color: var(--text);
+  padding: 0 12px;
+}
+
+button {
+  min-height: 46px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #00111d;
+  font-weight: 800;
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+button.secondary,
+.icon-button {
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.status-strip {
+  justify-content: space-between;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background: var(--muted);
+}
+
+.status-dot.online {
+  background: var(--good);
+}
+
+.status-dot.offline {
+  background: var(--danger);
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.actions-grid button {
+  background: var(--panel-soft);
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.actions-grid .danger-action {
+  grid-column: 1 / -1;
+  min-height: 62px;
+  background: var(--danger);
+  color: #2a0208;
+  font-size: 1.1rem;
+}
+
+.device-grid {
+  align-items: end;
+}
+
+.device-grid label {
+  flex: 1;
+}
+
+.schedule-form label {
+  flex: 1;
+}
+
+.code-box {
+  overflow-wrap: anywhere;
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #0b1220;
+  border: 1px solid var(--line);
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.9rem;
+}
+
+.list {
+  display: grid;
+  gap: 8px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0b1220;
+}
+
+.list-item small {
+  color: var(--muted);
+}
+
+.toast {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #e0f2fe;
+  color: #082f49;
+  font-weight: 700;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    padding: 16px;
+  }
+
+  .button-row,
+  .device-grid,
+  .schedule-form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

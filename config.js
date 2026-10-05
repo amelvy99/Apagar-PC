@@ -1,0 +1,4 @@
+window.APAGAR_PC_CONFIG = {
+  SUPABASE_URL: "https://oajjlslxaexjgctyecri.supabase.co",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9hampsc2x4YWV4amdjdHllY3JpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEyMTcxMjEsImV4cCI6MjEwNjc5MzEyMX0.GXTVrXmevTbtaxNR_9vqSbmzmRfm89tqvMLJZ5eg_3w"
+};
